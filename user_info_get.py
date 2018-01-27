@@ -54,11 +54,10 @@ def main():
         info_title = ['user_id', 'user_name', 'gender', 'level', 'big_member', 'location', 'birthday', 'registration_date', 'sign']
         for n, tag in enumerate(info_title):
             info_sheet.write(0, col_counter*len(info_title)+n, tag)    #写入初始抬头title
+        time_start = time.asctime(time.localtime(time.time()))
+        print('\n程序开始运行：{}'.format(time_start))
 
         try:
-            time_start = time.asctime(time.localtime(time.time()))
-            print('\n程序开始运行：{}'.format(time_start))
-
             for col_index in range(start_col, end_col):    #列循环
                 col_raise = col_index    #col_raise参数用于记录出现异常的列
                 col_index_current = col_index+1
@@ -80,7 +79,7 @@ def main():
                         row_index_current = row_index+1
                         row_index_max = len(col_values_nonnull)
                         rate_row = round(row_index_current / row_index_max * 100)
-                        print('\r解析{:^3}%，{:^5}个/{:^5}个'.format(rate_row, row_index_current, row_index_max), end='')
+                        print('\r解析{:^3}%，{:^5}个/{:^5}个'.format(rate_row, row_index_current-1, row_index_max), end='')
                     except:
                         error.append('出错在：{:^3}列{:^5}行数据，{}，累积{}个'.format(col_raise, row_raise, time.asctime(time.localtime(time.time())), len(error)))
                         print('出错！在{:^3}列{:^5}行数据，{}，累积{}个'.format(col_raise, row_raise, time.asctime(time.localtime(time.time())), len(error)))
@@ -107,6 +106,8 @@ def main():
         finally:
             time_end = time.asctime(time.localtime(time.time()))
             print('\n程序结束：{}'.format(time_end))
+            error.append('\n程序开始于：{}'.format(time_start))
+            error.append('程序结束于：{}'.format(time_end))
             with open('Error_log_{} to {}.txt'.format(start_col, end_col-1), 'w', encoding='utf-8') as error_file:   #保存错误日志
                 for log in error:
                     error_file.write('{}\n'.format(log))
