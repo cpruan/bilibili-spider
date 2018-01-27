@@ -85,8 +85,8 @@ def main():
                         error.append('出错在：{:^3}列{:^5}行数据，{}，累积{}个'.format(col_raise, row_raise, time.asctime(time.localtime(time.time())), len(error)))
                         print('出错！在{:^3}列{:^5}行数据，{}，累积{}个'.format(col_raise, row_raise, time.asctime(time.localtime(time.time())), len(error)))
                         if len(error) > 100:    #如果错误过多（估计被封ip），则退出
-                            error.append('\n终止在{}列，已采集{:^5}个数据，错误率：{:^3}%，采集率{:^3}%'.format(col_index, info_count, round(100/info_count * 100, 2), round(info_count/info_max * 100, 2)))
-                            print('\n终止在{}列，已采集{:^5}个数据，错误率：{:^3}%，采集率{:^3}%'.format(col_index, info_count, round(100/info_count * 100, 2), round(info_count/info_max * 100, 2)))
+                            error.append('\n终止在{}列，已采集{:^5}个数据，错误率：{:^3}%，采集率{:^3}%'.format(col_index, info_count, round(len(error)/info_count * 100, 2), round(info_count/info_max * 100, 2)))
+                            print('\n终止在{}列，已采集{:^5}个数据，错误率：{:^3}%，采集率{:^3}%'.format(col_index, info_count, round(len(error)/info_count * 100, 2), round(info_count/info_max * 100, 2)))
                             raise
 
                     if row_counter > 10000:  #存储xls的换行操作
