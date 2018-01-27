@@ -98,17 +98,20 @@ def main():
                 #         break
                 # if info_count > 5:
                 #     break
-
+            error.appenprint('\n解析完成！已采集{:^5}个数据，错误率：{:^3}%，采集率{:^3}%'.format(info_count, round(len(error)/info_count * 100, 2), round(info_count/info_max * 100, 2)))
             print('\n解析完成！已采集{:^5}个数据，错误率：{:^3}%，采集率{:^3}%'.format(info_count, round(len(error)/info_count * 100, 2), round(info_count/info_max * 100, 2)))
+
         except:
             print("\n因其他错误退出！")
+
+        finally:
             time_end = time.asctime(time.localtime(time.time()))
             print('\n程序结束：{}'.format(time_end))
             with open('Error_log_{} to {}.txt'.format(start_col, end_col-1), 'w', encoding='utf-8') as error_file:   #保存错误日志
                 for log in error:
                     error_file.write('{}\n'.format(log))
                 error_file.close()
-        finally:
+
             workbook.release_resources()
             info_book.save(file_path_part + 'user_info_{} to {}.xls'.format(start_col, end_col-1))   #最关键的，存储已解析的信息
 
