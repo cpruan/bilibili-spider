@@ -108,7 +108,7 @@ def main():
             print('\n程序结束：{}'.format(time_end))
             error.append('\n程序开始于：{}'.format(time_start))
             error.append('程序结束于：{}'.format(time_end))
-            with open('Error_log_{} to {}.txt'.format(start_col, end_col-1), 'w', encoding='utf-8') as error_file:   #保存错误日志
+            with open(file_path_part + 'Error_log_{} to {}.txt'.format(start_col, end_col-1), 'w', encoding='utf-8') as error_file:   #保存错误日志
                 for log in error:
                     error_file.write('{}\n'.format(log))
                 error_file.close()
