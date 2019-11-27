@@ -1,4 +1,4 @@
-### 欢迎大家访问我的小站：![Pp's blog](https://cpruan.com/)
+### 欢迎大家访问我的小站：[Pp's blog](https://cpruan.com/)
 
 <br><br>
 
