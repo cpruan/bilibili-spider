@@ -1,4 +1,5 @@
 ### 欢迎大家访问我的小站：[Pp's blog](https://cpruan.com/)
+![](https://cpruan.com/static/blog/image/my_logo01_smaller.png)
 
 <br><br>
 
